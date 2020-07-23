@@ -9,7 +9,9 @@ import com.example.pruebapoomovil_munozxavier.WebService.Asynchtask;
 import com.example.pruebapoomovil_munozxavier.WebService.WebService;
 import com.mindorks.placeholderview.PlaceHolderView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,6 +29,9 @@ public class MainActivity extends AppCompatActivity implements Asynchtask {
         WebService ws= new WebService("https://api.jsonbin.io/b/5efe857d0bab551d2b6af8b1",
                 datos, MainActivity.this, MainActivity.this);
         ws.execute("GET");
+
+
+
         mGalleryView = (PlaceHolderView)findViewById(R.id.galleryView);
         mGalleryView
                 .addView(new GalleryItem(getResources().getDrawable(R.drawable.embuandes_opt)))
@@ -43,6 +48,14 @@ public class MainActivity extends AppCompatActivity implements Asynchtask {
 
     @Override
     public void processFinish(String result) throws JSONException {
+        JSONArray JSONlista =  new JSONArray(result);
+        for(int i = 0; i< JSONlista.length(); i++){
+            JSONObject pais=  JSONlista.getJSONObject(i);
+            lstBancos= lstBancos +"\n" +pais.getString("name").toString();
+        }
+        //txtBancos.setText("Respuesta WS: " + lstBancos);
+        //txtBancos.setText("Respuesta WS: " + result);
+        //bundle.getString("NOMBRE")+ "\n CLAVE:"+bundle.getString("PASS"));
 
     }
 }
