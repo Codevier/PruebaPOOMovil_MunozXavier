@@ -11,7 +11,7 @@ import com.example.pruebapoomovil_munozxavier.Model.Paises;
 import com.example.pruebapoomovil_munozxavier.WebService.Asynchtask;
 import com.example.pruebapoomovil_munozxavier.WebService.WebService;
 import com.mindorks.placeholderview.PlaceHolderView;
-import com.squareup.picasso.Picasso;
+//import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,7 +24,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity implements Asynchtask {
 
 
-    private PlaceHolderView mGalleryView;
+    //private PlaceHolderView mGalleryView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements Asynchtask {
         //mGalleryView = (PlaceHolderView)findViewById(R.id.galleryView);
         PlaceHolderView placeHolderView;
         placeHolderView=(PlaceHolderView) findViewById(R.id.galleryView);
-        AdaptadorPaises adaptadorPaises= new AdaptadorPaises(lstPaises);
+        AdaptadorPaises adaptadorPaises= new AdaptadorPaises(this,lstPaises);
         placeHolderView.setAdapter(adaptadorPaises);
 
         /*
