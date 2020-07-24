@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.pruebapoomovil_munozxavier.Adapter.AdaptadorPaises;
 import com.example.pruebapoomovil_munozxavier.Model.Paises;
 import com.example.pruebapoomovil_munozxavier.WebService.Asynchtask;
 import com.example.pruebapoomovil_munozxavier.WebService.WebService;
@@ -57,10 +58,11 @@ public class MainActivity extends AppCompatActivity implements Asynchtask {
         ArrayList<Paises> lstPaises = new ArrayList<Paises> ();
         JSONArray JSONlista =  new JSONArray(result);
         lstPaises=Paises.JsonObjectsBuild(JSONlista);
-        mGalleryView = (PlaceHolderView)findViewById(R.id.galleryView);
-
+        //mGalleryView = (PlaceHolderView)findViewById(R.id.galleryView);
         PlaceHolderView placeHolderView;
         placeHolderView=(PlaceHolderView) findViewById(R.id.galleryView);
+        AdaptadorPaises adaptadorPaises= new AdaptadorPaises(lstPaises);
+        placeHolderView.setAdapter(adaptadorPaises);
 
         /*
         for(int i = 0; i< JSONlista.length(); i++){
