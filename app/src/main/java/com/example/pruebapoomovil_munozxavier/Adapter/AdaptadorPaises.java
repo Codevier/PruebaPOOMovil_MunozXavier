@@ -33,11 +33,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
+//import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
+//import com.bumptech.glide.Glide;
 import com.example.pruebapoomovil_munozxavier.Model.Paises;
 import com.example.pruebapoomovil_munozxavier.R;
-import com.mindorks.placeholderview.PlaceHolderView;
+//import com.mindorks.placeholderview.PlaceHolderView;
+//import com.mindorks.placeholderview.PlaceHolderView;
+import com.squareup.picasso.Picasso;
 //import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -48,13 +51,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-public class AdaptadorPaises extends PlaceHolderView.Adapter<AdaptadorPaises.ViewHolder> {
+public class AdaptadorPaises extends RecyclerView.Adapter<AdaptadorPaises.ViewHolder> {
 
     ArrayList<Paises> listPaises;
-    Context mcontext;
 
-    public AdaptadorPaises(Context context ,ArrayList<Paises> listPaises) {
-        this.mcontext=context;
+    public AdaptadorPaises(ArrayList<Paises> listPaises) {
         this.listPaises = listPaises;
     }
 
@@ -69,10 +70,11 @@ public class AdaptadorPaises extends PlaceHolderView.Adapter<AdaptadorPaises.Vie
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.name.setText(listPaises.get(position).getName());
-        String url="http://www.geognos.com/api/en/countries/flag/"+listPaises.get(position).getAlpha2Code()+".png";
-        Glide.with(mcontext)
-                .load(url)
-                .into(holder.imageView);
+        String url = "http://www.geognos.com/api/en/countries/flag/"+ listPaises.get(position).getAlpha2Code().toString()+".png" ;
+        Picasso.get().load(url).into(holder.imageView);
+        //Glide.with(mcontext)
+          //      .load(url)
+            //    .into(holder.imageView);
         //Picasso.get().load(url).into(holder.imageView);
     }
 

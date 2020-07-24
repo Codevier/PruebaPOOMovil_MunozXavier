@@ -35,7 +35,7 @@ public class Paises {
 
     public Paises(JSONObject a) throws JSONException {
         name =  a.getString("name").toString();
-        alpha2Code = "http://www.geognos.com/api/en/countries/flag/"+ a.getString("alpha2Code").toString()+".png" ;
+        alpha2Code = a.getString("alpha2Code").toString();
     }
 
     public static ArrayList<Paises> JsonObjectsBuild(JSONArray datos) throws JSONException {

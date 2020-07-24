@@ -2,6 +2,7 @@ package com.example.pruebapoomovil_munozxavier;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -10,7 +11,7 @@ import com.example.pruebapoomovil_munozxavier.Adapter.AdaptadorPaises;
 import com.example.pruebapoomovil_munozxavier.Model.Paises;
 import com.example.pruebapoomovil_munozxavier.WebService.Asynchtask;
 import com.example.pruebapoomovil_munozxavier.WebService.WebService;
-import com.mindorks.placeholderview.PlaceHolderView;
+//import com.mindorks.placeholderview.PlaceHolderView;
 //import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -59,9 +60,10 @@ public class MainActivity extends AppCompatActivity implements Asynchtask {
         JSONArray JSONlista =  new JSONArray(result);
         lstPaises=Paises.JsonObjectsBuild(JSONlista);
         //mGalleryView = (PlaceHolderView)findViewById(R.id.galleryView);
-        PlaceHolderView placeHolderView;
-        placeHolderView=(PlaceHolderView) findViewById(R.id.galleryView);
-        AdaptadorPaises adaptadorPaises= new AdaptadorPaises(this,lstPaises);
+        RecyclerView placeHolderView;
+        placeHolderView=(RecyclerView) findViewById(R.id.galleryView);
+        placeHolderView.setLayoutManager(new LinearLayoutManager(this));
+        AdaptadorPaises adaptadorPaises= new AdaptadorPaises(lstPaises);
         placeHolderView.setAdapter(adaptadorPaises);
 
         /*
