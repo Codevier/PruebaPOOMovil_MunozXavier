@@ -2,6 +2,7 @@ package com.example.pruebapoomovil_munozxavier;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements Asynchtask {
         setContentView(R.layout.activity_main);
 
         Map<String, String> datos = new HashMap<String, String>();
-        WebService ws= new WebService("https://api.jsonbin.io/b/5efe857d0bab551d2b6af8b1",
+        WebService ws= new WebService("https://restcountries.eu/rest/v2/all",
                 datos, MainActivity.this, MainActivity.this);
         ws.execute("GET");
 
@@ -51,11 +52,21 @@ public class MainActivity extends AppCompatActivity implements Asynchtask {
     @Override
     public void processFinish(String result) throws JSONException {
         JSONArray JSONlista =  new JSONArray(result);
+        mGalleryView = (PlaceHolderView)findViewById(R.id.galleryView);
+
+        PlaceHolderView placeHolderView;
+        placeHolderView=(PlaceHolderView) findViewById(R.id.lstListaUsuario);
+
+        /*
         for(int i = 0; i< JSONlista.length(); i++){
             JSONObject pais=  JSONlista.getJSONObject(i);
-            Picasso.with(context).load("http://example.com/image.jpg").into(imageView);
-            lstBancos= lstBancos +"\n" +pais.getString("name").toString();
+
+            //lstBancos= lstBancos +"\n" +pais.getString("name").toString();
+            mGalleryView.addView(new GalleryItem(pais.getString("alpha2Code")));
         }
+        */
+
+        /*
         mGalleryView = (PlaceHolderView)findViewById(R.id.galleryView);
         mGalleryView
                 .addView(new GalleryItem(getResources().getDrawable(R.drawable.embuandes_opt)))
@@ -67,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements Asynchtask {
                 .addView(new GalleryItem(getResources().getDrawable(R.drawable.embuandes_opt)))
                 .addView(new GalleryItem(getResources().getDrawable(R.drawable.embuandes_opt)))
                 .addView(new GalleryItem(getResources().getDrawable(R.drawable.embuandes_opt)));
+                */
         //txtBancos.setText("Respuesta WS: " + lstBancos);
         //txtBancos.setText("Respuesta WS: " + result);
         //bundle.getString("NOMBRE")+ "\n CLAVE:"+bundle.getString("PASS"));

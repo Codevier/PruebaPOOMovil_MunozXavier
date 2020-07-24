@@ -21,10 +21,11 @@ public class GalleryItem {
 
     private Drawable mDrawable;
 
-    public GalleryItem(Drawable drawable) {
+    public GalleryItem(String url) {
         //Picasso.with(context).load("http://example.com/image.jpg").into(imageView);
-        Drawable myDrawable = imageView.getDrawable();
-        mDrawable = drawable;
+        //Drawable myDrawable = imageView.getDrawable();
+        Picasso.get().load("http://www.geognos.com/api/en/countries/flag/"+url+".png").into(imageView);
+        //mDrawable = drawable;
     }
 
     @Resolve

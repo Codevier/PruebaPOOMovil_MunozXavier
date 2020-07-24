@@ -5,7 +5,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.recyclerviewempleos.WebService.HttpRequest.HttpRequestException;
+import com.example.pruebapoomovil_munozxavier.WebService.HttpRequest.HttpRequestException;
 
 import org.json.JSONException;
 
