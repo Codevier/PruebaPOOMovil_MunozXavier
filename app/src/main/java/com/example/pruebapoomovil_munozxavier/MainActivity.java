@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.pruebapoomovil_munozxavier.Model.Paises;
 import com.example.pruebapoomovil_munozxavier.WebService.Asynchtask;
 import com.example.pruebapoomovil_munozxavier.WebService.WebService;
 import com.mindorks.placeholderview.PlaceHolderView;
@@ -15,10 +16,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements Asynchtask {
+
 
     private PlaceHolderView mGalleryView;
     @Override
@@ -51,11 +54,13 @@ public class MainActivity extends AppCompatActivity implements Asynchtask {
 
     @Override
     public void processFinish(String result) throws JSONException {
+        ArrayList<Paises> lstPaises = new ArrayList<Paises> ();
         JSONArray JSONlista =  new JSONArray(result);
+        lstPaises=Paises.JsonObjectsBuild(JSONlista);
         mGalleryView = (PlaceHolderView)findViewById(R.id.galleryView);
 
         PlaceHolderView placeHolderView;
-        placeHolderView=(PlaceHolderView) findViewById(R.id.lstListaUsuario);
+        placeHolderView=(PlaceHolderView) findViewById(R.id.galleryView);
 
         /*
         for(int i = 0; i< JSONlista.length(); i++){
