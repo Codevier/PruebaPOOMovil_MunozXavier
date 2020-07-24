@@ -9,6 +9,7 @@ import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.NonReusable;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
+import com.squareup.picasso.Picasso;
 
 @Animate(Animation.CARD_LEFT_IN_DESC)
 @NonReusable
@@ -21,6 +22,8 @@ public class GalleryItem {
     private Drawable mDrawable;
 
     public GalleryItem(Drawable drawable) {
+        //Picasso.with(context).load("http://example.com/image.jpg").into(imageView);
+        Drawable myDrawable = imageView.getDrawable();
         mDrawable = drawable;
     }
 

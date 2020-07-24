@@ -8,6 +8,7 @@ import android.os.Bundle;
 import com.example.pruebapoomovil_munozxavier.WebService.Asynchtask;
 import com.example.pruebapoomovil_munozxavier.WebService.WebService;
 import com.mindorks.placeholderview.PlaceHolderView;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements Asynchtask {
                 datos, MainActivity.this, MainActivity.this);
         ws.execute("GET");
 
-
+        /*
 
         mGalleryView = (PlaceHolderView)findViewById(R.id.galleryView);
         mGalleryView
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements Asynchtask {
                 .addView(new GalleryItem(getResources().getDrawable(R.drawable.embuandes_opt)))
                 .addView(new GalleryItem(getResources().getDrawable(R.drawable.embuandes_opt)))
                 .addView(new GalleryItem(getResources().getDrawable(R.drawable.embuandes_opt)));
+                */
         //mGalleryView.getBuilder().setLayoutManager(new GridLayoutManager(this.getApplicationContext(), 2));
     }
 
@@ -51,8 +53,20 @@ public class MainActivity extends AppCompatActivity implements Asynchtask {
         JSONArray JSONlista =  new JSONArray(result);
         for(int i = 0; i< JSONlista.length(); i++){
             JSONObject pais=  JSONlista.getJSONObject(i);
+            Picasso.with(context).load("http://example.com/image.jpg").into(imageView);
             lstBancos= lstBancos +"\n" +pais.getString("name").toString();
         }
+        mGalleryView = (PlaceHolderView)findViewById(R.id.galleryView);
+        mGalleryView
+                .addView(new GalleryItem(getResources().getDrawable(R.drawable.embuandes_opt)))
+                .addView(new GalleryItem(getResources().getDrawable(R.drawable.embuandes_opt)))
+                .addView(new GalleryItem(getResources().getDrawable(R.drawable.embuandes_opt)))
+                .addView(new GalleryItem(getResources().getDrawable(R.drawable.embuandes_opt)))
+                .addView(new GalleryItem(getResources().getDrawable(R.drawable.embuandes_opt)))
+                .addView(new GalleryItem(getResources().getDrawable(R.drawable.embuandes_opt)))
+                .addView(new GalleryItem(getResources().getDrawable(R.drawable.embuandes_opt)))
+                .addView(new GalleryItem(getResources().getDrawable(R.drawable.embuandes_opt)))
+                .addView(new GalleryItem(getResources().getDrawable(R.drawable.embuandes_opt)));
         //txtBancos.setText("Respuesta WS: " + lstBancos);
         //txtBancos.setText("Respuesta WS: " + result);
         //bundle.getString("NOMBRE")+ "\n CLAVE:"+bundle.getString("PASS"));
